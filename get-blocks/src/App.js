@@ -12,17 +12,13 @@ function App() {
         </p>
         <button onclick="getBlocks()">Get the latest 10 blocks</button>
 	<script>
-	const { JsonRpc } = require('eosjs');
-	const fetch = require('node-fetch');
-	const rpc = new JsonRpc('https://api.eosnewyork.io/', { fetch });
 
-	async function getBlocks() {
-  		try {
-    			let info = await rpc.get_info();
-    			console.log(await rpc.get_info(info.last_irreversible_block_num));
-  		} catch (error) {
-    			console.error(JSON.stringify(error));
-  		}
+	function getBlocks() {
+		const { JsonRpc } = require('eosjs');
+        	const fetch = require('node-fetch');
+        	const rpc = new JsonRpc('https://api.eosnewyork.io/', { fetch });
+    		let info = await rpc.get_info();
+    		console.log(await rpc.get_info(info.last_irreversible_block_num));
 	}
 	</script>
       </header>
